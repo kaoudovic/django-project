@@ -1,0 +1,17 @@
+{% extends 'index.html'%}
+{% load static%}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Samara</title>
+</head>
+<body>
+
+ {% block base%}
+ <img src="{%static 'myapp/img/4.jpg' %}">
+ <img src="{%static 'myapp/img/5.jpg' %}">
+
+  {% endblock%}
+</body>
+</html>
