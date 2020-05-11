@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from . import models
 from .forms import staff_form
 from .models import staff
+from django.contrib.auth.models import User
 
 
 def index(request):
@@ -31,3 +32,21 @@ def register(request):
         obj.save()
         return redirect('/c3')
     return render(request,'staff_reg.html',{'f':form})
+
+############################################3
+# register
+########################
+
+
+def registration(request):
+    return render(request,'registeration.html',{})
+
+
+def register_backend(request):
+    user=User.objects.create_user(request.POST['uname'],request.POST['email'],request.POST['pass'])
+    user.first_name=request.POST['fname']
+    user.last_name=request.POST['lname']
+    user.save()
+    return redirect('/c3')
+
+
