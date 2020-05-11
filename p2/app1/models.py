@@ -20,3 +20,7 @@ class info(models.Model):
     lang=models.CharField(max_length=50)
     num=models.IntegerField()
 
+
+class pic(models.Model):
+    name=models.CharField(max_length=50)
+    image=models.ImageField(upload_to="app1/static/app1/image/")

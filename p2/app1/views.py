@@ -1,9 +1,10 @@
 from django.shortcuts import render, HttpResponse, redirect
-from . import models
+from .import models
 from .forms import staff_form
 from .models import staff,info
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
+from .import forms2
 
 
 def index(request):
@@ -121,5 +122,15 @@ def show_user(request,username):
     }
     return render(request,'show.html',context)
 
+
+def upload_image(request):
+    u=models.pic()
+    form=forms2.pic_form(request.POST,request.FILES)
+    if form.is_valid():
+        u.name=form.cleaned_data['name']
+        u.image=form.cleaned_data['img']
+        u.save()
+        return HttpResponse('yes i do....!')
+    return render(request,'pic.html',{'form':form})
 
 

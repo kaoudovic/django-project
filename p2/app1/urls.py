@@ -1,5 +1,5 @@
 from django.urls import path
-from .views import index,register,registration,register_backend,log,login_backend,profile,logout_backend,log_info,info_backend,show_user
+from .views import index,register,registration,register_backend,log,login_backend,profile,logout_backend,log_info,info_backend,show_user,upload_image
 urlpatterns = [
    path('',index,name='index'),
    path('register1/',register,name='register1'),
@@ -12,5 +12,6 @@ urlpatterns = [
    path('log_info/<str:username/',log_info,name='log_info'),
    path('info_backend/<str:username>/',info_backend,name='info_backend'),
    path('show_user/<str:username>/',show_user,name='show'),
+   path('pic/',upload_image,name='pic'),
 
 ]
