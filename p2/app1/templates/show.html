@@ -1,0 +1,16 @@
+{%load static%}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>user</title>
+</head>
+<body>
+welcome{{username}}
+<h3>E-mail:{{u1.email}}</h3>
+{%for s in u2%}
+ <h3>Jobs{{s.jobs}}</h3>
+ <h3>Lang{{s.lang}}</h3>
+ <h3>Number{{s.num}}</h3>
+{%endfor%}
+</body>
+</html>

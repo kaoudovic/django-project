@@ -1,7 +1,7 @@
 from django.shortcuts import render, HttpResponse, redirect
 from . import models
 from .forms import staff_form
-from .models import staff
+from .models import staff,info
 from django.contrib.auth.models import User
 from django.contrib.auth import authenticate, login, logout
 
@@ -65,8 +65,15 @@ def log(request):
     return render(request, 'login.html', {})
 
 
-def profile(request,username):
-    return render(request, 'profile.html', {})
+# def profile(request,username):
+#   return render(request, 'profile.html', {})
+
+
+def profile(request, username):
+    if request.user.is_authenticated:
+        return render(request, 'profile.html', {'u': username})
+    else:
+        return HttpResponse('you are not authorized to enter that page')
 
 
 def login_backend(request):
@@ -75,7 +82,7 @@ def login_backend(request):
     result = authenticate(username=username, password=password)
     if result is not None:
         login(request, result)
-        link = '/c3/profile/' +str(result)
+        link = '/c3/profile/' + str(result)
         return redirect(link)
         # return HttpResponse('Welcome'+' '+username)
     else:
@@ -85,3 +92,34 @@ def login_backend(request):
 def logout_backend(request):
     logout(request)
     return HttpResponse('logged out')
+#############################3
+#forign key
+#########################
+
+
+def log_info(request, username):
+    return render(request, '.html', {'u': username})
+
+
+def info_backend(request, username):
+    u=info()
+    user=User.objects.get(username=username)
+    u.jobs=request.POST['job']
+    u.lang=request.POST['lang']
+    u.nam=request.POST['num']
+    u.username=user
+    u.save()
+    return HttpResponse('Yes i do.....!')
+
+
+def show_user(request,username):
+    user=User.objects.get(username=username)
+    inf=info.objects.filter(username=user)
+    context={
+        'u1':user,
+        'u2':inf
+    }
+    return render(request,'show.html',context)
+
+
+

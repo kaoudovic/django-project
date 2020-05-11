@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Login Form</title>
+    <title>info</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
@@ -10,17 +10,16 @@
 <body style="background-color:#00061a">
     <div style="margin-left:35%;width:30%">
     <h1 style="text-align:center ;color:#476b6b">LOGIN</h1>
-    <form method="post" action="{% url 'login_backend' %}" style="">
+    <form method="post" action="{% url 'info_backend' username %}" style="">
       {% csrf_token%}
         <div class="form-group">
-    <h5 style="color:#476b6b">UserName </h5><input name="uname" type="text" class="form-control"  aria-describedby="emailHelp">
+    <h5 style="color:#476b6b">Jops </h5><input name="jobs" type="text" class="form-control"  aria-describedby="emailHelp">
     </div>
     <div class="form-group">
-        <h5 style="color:#476b6b"> Password </h5><input name="pass" type="password" class="form-control"  aria-describedby="emailHelp">
+        <h5 style="color:#476b6b"> Lang </h5><input name="lang" type="text" class="form-control"  aria-describedby="emailHelp">
     </div>
-    <div class="form-group form-check">
-     <input type="checkbox" class="form-check-input" id="exampleCheck1">
-     <label style="color:#476b6b" class="form-check-label" for="exampleCheck1">Save me</label>
+        <div class="form-group">
+        <h5 style="color:#476b6b"> Number </h5><input name="num" type="number" class="form-control"  aria-describedby="emailHelp">
     </div>
    <button type="submit" class="btn btn-primary">Login</button>
     </form>
