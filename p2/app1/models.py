@@ -7,6 +7,6 @@ class staff(models.Model):
     age=models.IntegerField()
     birthday=models.DateField()
     department=models.CharField(max_length=50,null=True)
-    
+
     def __str__(self):
         return self.name
